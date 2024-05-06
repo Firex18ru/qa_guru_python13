@@ -5,6 +5,6 @@ import time
 def browser_settings():
     browser.config.window_height = 768
     browser.config.window_width = 1024
-    time.sleep(10)
+#    time.sleep(3)
     yield
     browser.quit()
