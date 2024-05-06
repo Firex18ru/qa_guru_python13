@@ -1,9 +1,10 @@
 import time
-
 import pytest
 from selene import browser, by, have
 
-
+#@pytest.fixture()
+#def browser():
+#    print("OPEN!")
 def test_search(browser):
     browser.open('https://google.com')
     time.sleep(10)
