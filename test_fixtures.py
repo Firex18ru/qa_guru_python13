@@ -1,27 +1,14 @@
+import time
+
 import pytest
-
-@pytest.fixture(scope="session")
-def browser():
-    print("браузер!")
-    yield
-    print("закрываем браузер!")
-@pytest.fixture
-def login_page(browser):
-    print("логин пейдж!")
-    pass
-@pytest.fixture
-def user():
-    print("Юзер!")
-    return "username", "password"
+from selene import browser, by, have
 
 
-def test_logout(login_page, user):
-    username, password = user
-    assert username == "username"
-    assert password == "password"
-#    assert 1 == 2
+def test_search(browser):
+    browser.open('https://google.com')
+    time.sleep(10)
+    browser.element(by.name('q')).type('asus graphics card').press_enter()
+    time.sleep(10)
+    browser.all('.web-result').first.element('.result__link').click()
 
-def test_login(login_page, user):
-    username, password = user
-    assert username == "username"
-    assert password == "password"
+    browser.should(have.title_containing('asus'))
