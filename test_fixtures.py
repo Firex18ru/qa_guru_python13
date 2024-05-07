@@ -12,6 +12,6 @@ def test_search():
 def test_wrong_search():
     browser.open('https://google.com')
 
-    browser.element(by.name('q')).type('неверный hfndkcvkl запрос').press_enter()
+    browser.element(by.name('q')).type('hfndkcvklлсяув').press_enter()
 
-    browser.element('[id="search"]').should(have.text('pytest'))
+    browser.element('[id="search"]').should(have.text('неверный hfndkcvklлсяув запрос'))
