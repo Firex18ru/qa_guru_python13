@@ -10,8 +10,9 @@ def test_search():
 
 
 def test_wrong_search():
+    string = "rtdfwabcvnch ufgdsswyr weqqqvdsqz"
+
     browser.open('https://google.com')
+    browser.element(by.name('q')).type(string).press_enter()
 
-    browser.element(by.name('q')).type('hfndуцпцgfewrwrfdsfwerkcvklлсяув').press_enter()
-
-    browser.element('[id="search"]').should(have.text('неверный hfndуцпцgfewrwrfdsfwerkcvklлсяув запрос'))
+    browser.element('[id="rcnt"]').should(have.text('По запросу rtdfwabcvnch ufgdsswyr weqqqvdsqz ничего не найдено.'))
